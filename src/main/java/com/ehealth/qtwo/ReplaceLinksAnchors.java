@@ -5,9 +5,11 @@ import java.util.regex.Pattern;
 
 /**
  * Created by abdulhakim on 7/23/16.
+ *
+ * This program simply takes a string and replace all internet url with html anchors
+ *
  */
 public class ReplaceLinksAnchors {
-    private static final String URL_REG = "^((https?|http?|ftp?)://|(www|ftp)\\.)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$";
 
     // Pattern for recognizing a URL, based off RFC 3986
     private static final Pattern urlPattern = Pattern.compile(
@@ -19,6 +21,10 @@ public class ReplaceLinksAnchors {
 
     public String convertWebsitesToAnchors(String str) {
 
+        /*
+        *Takes the string and replace all internet urls with proper html links
+        *
+        * */
         //System.out.println(str);
         String[] arrStr = str.split("\\s+");
         String newStr = "";
@@ -39,11 +45,17 @@ public class ReplaceLinksAnchors {
 
     public static void main(String[] args) {
         String theStr;
-
+   /*
+   * Collect the passed strings  via args array
+   *
+   * */
         if (args.length != 0) {
             theStr = args[0];
+            //Instantiate Object
             ReplaceLinksAnchors rp = new ReplaceLinksAnchors();
+            //Inform the user
             System.out.println("The resulting string below with achnored links: ");
+            //Call the convertWebsitesToAnchor method and print the returned value
             System.out.println(rp.convertWebsitesToAnchors(theStr));
         } else {
             System.out.println("No string provided");
